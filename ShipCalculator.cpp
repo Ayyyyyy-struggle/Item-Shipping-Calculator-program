@@ -199,6 +199,7 @@ int main()
                 {
                     shipCost = range4_jup;
                 }
+                break;
             case('n'):
             case('N'):
                 cout << "\nTry again, exiting" << endl;
