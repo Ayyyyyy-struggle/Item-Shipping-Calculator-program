@@ -26,7 +26,7 @@ const double range3 = 150;
 // Declare constants - shipping cost to UAS
 const double range1_usa = 6.00;
 const double range2_usa = 9.00;
-const double raneg3_usa = 12.00;
+const double range3_usa = 12.00;
 const double range4_usa = 0.00;
 
 // Declare constants - shipping to Canada
@@ -117,23 +117,29 @@ int main()
     
 
     // Determine shipping cost besed on destination
-    if (country == "USA")
+if (country == "USA")
     {
         if (orderTotal <= range1)
         {
             shipCost = range1_usa;
         }
-        else if (orderTotal <= range2 && orderTotal > range1)
+        else 
         {
+            if ( orderTotal <= range2)
+            {
             shipCost = range2_usa;
-        }
-        else if (orderTotal <= range3 && orderTotal > range2)
-        {
-            shipCost = raneg3_usa;
-        }
-        else
-        {
-            shipCost = range4_usa;
+            }
+            else 
+            {
+                if (orderTotal <= range3)
+                {
+                    shipCost = range3_usa;
+                }
+                else
+                {
+                    shipCost = range4_usa;
+                }
+            }
         }
     }
     else if (country == "CAN")
@@ -142,17 +148,23 @@ int main()
         {
             shipCost = range1_can;
         }
-        else if (orderTotal <= range2 && orderTotal > range1)
-        {
-            shipCost = range2_can;
-        }
-        else if (orderTotal <= range3 && orderTotal > range2)
-        {
-            shipCost = range3_can;
-        }
         else 
         {
-            shipCost = range4_can;
+            if ( orderTotal <= range2)
+            {
+            shipCost = range2_can;
+            }
+            else 
+            {
+                if (orderTotal <= range3)
+                {
+                    shipCost = range3_can;
+                }
+                else
+                {
+                    shipCost = range4_can;
+                }
+            }
         }
     }
     else if (country == "AUS")
@@ -161,17 +173,23 @@ int main()
         {
             shipCost = range1_aus;
         }
-        else if (orderTotal <= range2 && orderTotal > range1)
+        else 
         {
+            if ( orderTotal <= range2)
+            {
             shipCost = range2_aus;
-        }
-        else if (orderTotal <= range3 && orderTotal > range2)
-        {
-            shipCost = range3_aus;
-        }
-        else
-        {
-            shipCost = range4_aus;
+            }
+            else 
+            {
+                if (orderTotal <= range3)
+                {
+                    shipCost = range3_aus;
+                }
+                else
+                {
+                    shipCost = range4_aus;
+                }
+            }
         }
     }
     else if (country == "JUP")
@@ -188,18 +206,25 @@ int main()
                 {
                     shipCost = range1_jup;
                 }
-                else if (orderTotal <=range2 && orderTotal > range1)
+                else 
                 {
-                    shipCost = range2_jup;
+                    if (orderTotal <= range2)
+                    {   
+                        shipCost = range2_jup;
+                    }
+                    else 
+                    {
+                        if (orderTotal <= range3)
+                        {
+                            shipCost = range3_jup;
+                        }
+                        else
+                        {
+                            shipCost = range4_jup;
+                        }
+                    }
                 }
-                else if (orderTotal<= range3 && orderTotal > range2)
-                {
-                    shipCost = range3_jup;
-                }
-                else
-                {
-                    shipCost = range4_jup;
-                }
+
                 break;
             case('n'):
             case('N'):
@@ -210,7 +235,6 @@ int main()
                 return 0;
             default:
                 cout << "\nInvalid entry, exiting" << endl;
-
                 cout << "Press any key to continue . . ." << endl;
                 cin.ignore();
                 cin.get();
