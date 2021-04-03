@@ -51,7 +51,7 @@ int main()
 {
     string itemName;
     string country;
-    char fragile;
+    string fragile;
     char sure;
     double orderTotal ;
     double shipCost ;
@@ -76,28 +76,29 @@ int main()
         << ":" ;
     cin >> fragile;
 
+    transform(fragile.begin(), fragile.end(), fragile.begin(), :: toupper);
     
     
     // Determine whether the item is fragile
-    switch (fragile)
+    if (fragile == "Y")
     {
-        case 'y' :
-        case 'Y' :
-            fragFee = 2.00;
-            break;
-        case 'n' :
-        case 'N' :
-            fragFee = 0.00;
-            break;
-        default:
-            cout << "\nInvalid entry, exiting" << endl;
-
-            cout << "Press any key to continue . . ." << endl;
-            cin.ignore();
-            cin.get();
-
-            return 0;
+        fragFee = 2.00;
     }
+    else if (fragile == "N")
+    {
+        fragFee = 0.00;
+    }
+    else
+    {
+        cout << "\nInvalid entry, exiting" << endl;
+
+        cout << "Press any key to continue . . ." << endl;
+        cin.ignore();
+        cin.get();
+
+        return 0;
+    }
+   
     
     // Continue inputing info
     cout << left << "Please enter your order total" << right << setw(21)
